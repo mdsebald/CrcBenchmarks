@@ -8,7 +8,8 @@ Example Run:
   8 GB Ram
 
 
-`.../crc_benchmarks$ iex -S mix
+```
+.../crc_benchmarks$ iex -S mix
 Erlang/OTP 23 [erts-11.0.1] [source] [64-bit] [smp:4:4] [ds:4:4:10] [async-threads:1] [hipe]
 
 Interactive Elixir (1.10.3) - press Ctrl+C to exit (type h() ENTER for help)
@@ -43,7 +44,8 @@ iex(1)> CrcBenchmarks.run_benchmark(100)
     prev_n: 524288
   }
 ]
-iex(2)>`
+iex(2)>
+```
 
 ## Installation
 
