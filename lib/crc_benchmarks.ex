@@ -4,21 +4,21 @@ defmodule CrcBenchmarks do
   CRC Benchmark tests
   """
   def run_benchmark(data_length) do
-    data= make_data(data_length)
+    data_list = make_data_list(data_length)
+    data_bin = :binary.list_to_bin(data_list)
+
     Benchwarmer.benchmark([
       &:erlang.crc32/1, # Erlang BIF for CRC32
       &:crc32cer.nif/1, # Erlang implementation for CRC32-C using NIF's
-      &CRC.crc_32/1,    # Elixir configurable CRC implemented using NIF's, CRC32
-      &Grizzly.ZWave.CRC.crc16_aug_ccitt/1], # Natively implemented Elixir CRC16, for ZWave comm
-      data)
-    Benchwarmer.benchmark(&CRC.crc/2, [:crc_32c, data]) # Elixir configurable CRC implemented using NIF's, CRC32-C
+      &CRC.crc_32/1],    # Elixir configurable CRC implemented using NIF's, CRC32
+      data_bin)
+      Benchwarmer.benchmark(&CRC.crc/2, [:crc_32c, data_bin]) # Elixir configurable CRC implemented using NIF's, CRC32-C
+      Benchwarmer.benchmark(&Grizzly.ZWave.CRC.crc16_aug_ccitt/1, [data_list]) # Natively implemented Elixir CRC16, for ZWave comm
   end
 
-  # Make a binary data_length size, filled with random bytes
-  defp make_data(data_length) do
+  def make_data_list(data_length) do
     get_range(data_length)
     |> Enum.reduce([], fn(_, acc) -> [Enum.random(0..255) | acc] end)
-    |> List.to_string()
   end
 
   defp get_range(length) when length > 1, do: (1..length)

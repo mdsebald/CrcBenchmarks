@@ -15,33 +15,31 @@ Erlang/OTP 23 [erts-11.0.1] [source] [64-bit] [smp:4:4] [ds:4:4:10] [async-threa
 Interactive Elixir (1.10.3) - press Ctrl+C to exit (type h() ENTER for help)
 iex(1)> CrcBenchmarks.run_benchmark(100)
 *** &:erlang.crc32/1 ***
-1.7 sec     8M iterations   0.21 μs/op
+1.3 sec     8M iterations   0.16 μs/op
 
 *** &:crc32cer.nif/1 ***
-1.6 sec     8M iterations   0.2 μs/op
+1.2 sec     8M iterations   0.16 μs/op
 
 *** &CRC.crc_32/1 ***
-1.3 sec     1M iterations   1.31 μs/op
-
-*** &Grizzly.ZWave.CRC.crc16_aug_ccitt/1 ***
-1.6 sec   262K iterations   6.44 μs/op
+1.3 sec     1M iterations   1.29 μs/op
 
 *** &CRC.crc/2 ***
-1.3 sec     1M iterations   1.33 μs/op
+1.2 sec     1M iterations   1.17 μs/op
+
+*** &Grizzly.ZWave.CRC.crc16_aug_ccitt/1 ***
+1.9 sec   524K iterations   3.64 μs/op
 
 [
   %Benchwarmer.Results{
     args: [
-      :crc_32c,
-      <<68, 194, 182, 98, 194, 183, 195, 173, 75, 194, 187, 7, 63, 195, 174, 37,
-        89, 195, 146, 195, 174, 92, 0, 29, 195, 161, 194, 150, 21, 195, 152,
-        194, 178, 194, 142, 194, 165, 194, 188, 194, 150, 74, 194, 154, 195,
-        171, ...>>
+      [51, 11, 230, 165, 133, 91, 95, 28, 229, 158, 183, 209, 5, 255, 59, 238,
+       158, 45, 144, 250, 245, 166, 168, 14, 245, 132, 81, 41, 95, 244, 93, 237,
+       82, 130, 245, 94, 133, 243, 24, 96, 243, 105, 76, 18, 197, 206, 199, ...]
     ],
-    duration: 1394138,
-    function: &CRC.crc/2,
-    n: 1048575,
-    prev_n: 524288
+    duration: 1904582,
+    function: &Grizzly.ZWave.CRC.crc16_aug_ccitt/1,
+    n: 524287,
+    prev_n: 262144
   }
 ]
 iex(2)>
