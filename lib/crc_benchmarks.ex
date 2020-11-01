@@ -10,11 +10,21 @@ defmodule CrcBenchmarks do
     Benchwarmer.benchmark([
       &:erlang.crc32/1, # Erlang BIF for CRC32
       &:crc32cer.nif/1, # Erlang implementation for CRC32-C using NIF's
-      &CRC.crc_32/1],    # Elixir configurable CRC implemented using NIF's, CRC32
+      &CRC.crc_32/1,    # Elixir configurable CRC implemented using NIF's, CRC32
+      &CRC.ccitt_16/1], # Elixir configurable CRC implemented using NIF's, CRC16-CCITT
       data_bin)
       Benchwarmer.benchmark(&CRC.crc/2, [:crc_32c, data_bin]) # Elixir configurable CRC implemented using NIF's, CRC32-C
       Benchwarmer.benchmark(&Grizzly.ZWave.CRC.crc16_aug_ccitt/1, [data_list]) # Natively implemented Elixir CRC16, for ZWave comm
   end
+
+  def run_benchmark_crc16_ccitt(data_length) do
+    data_list = make_data_list(data_length)
+    data_bin = :binary.list_to_bin(data_list)
+
+    Benchwarmer.benchmark(&CRC.ccitt_16/1, data_bin) # Elixir configurable CRC implemented using NIF's, CRC16-CCITT
+    Benchwarmer.benchmark(&Grizzly.ZWave.CRC.crc16_aug_ccitt/1, [data_list]) # Natively implemented Elixir CRC16-CCITT, for ZWave comm
+  end
+
 
   def make_data_list(data_length) do
     get_range(data_length)

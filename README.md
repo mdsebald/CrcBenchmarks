@@ -45,6 +45,31 @@ iex(1)> CrcBenchmarks.run_benchmark(100)
 iex(2)>
 ```
 
+Compare CRC16-CCITT
+```
+iex(10)> CrcBenchmarks.run_benchmark_crc16_ccitt(100)
+*** &CRC.ccitt_16/1 ***
+1.2 sec     1M iterations   1.24 μs/op
+
+*** &Grizzly.ZWave.CRC.crc16_aug_ccitt/1 ***
+1.1 sec   262K iterations   4.23 μs/op
+
+[
+  %Benchwarmer.Results{
+    args: [
+      [122, 26, 1, 164, 62, 24, 126, 13, 17, 182, 212, 17, 163, 19, 51, 1, 226,
+       17, 47, 249, 32, 252, 89, 62, 137, 205, 110, 81, 57, 64, 14, 121, 4, 50,
+       10, 96, 218, 33, 144, 145, 135, 139, 5, 168, 75, 182, 172, ...]
+    ],
+    duration: 1107268,
+    function: &Grizzly.ZWave.CRC.crc16_aug_ccitt/1,
+    n: 262143,
+    prev_n: 131072
+  }
+]
+iex(11)>
+```
+
 ## Installation
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
