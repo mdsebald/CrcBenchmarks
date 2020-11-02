@@ -26,8 +26,9 @@ defmodule CrcBenchmarks.MixProject do
       {:crc32cer, "~> 0.1.10"},
       # Generalized implementation of CRC using NIF's, Configurable for number of bits, etc.
       {:crc, "~> 0.10"},
-      # Includes native elixir CRC implementation
-      {:grizzly, "~> 0.15.3"}
+      # Native elixir CRC implementation
+      # Copy Zwave.Crc modules to main lib, and enable HiPE
+      # {:grizzly, "~> 0.15.3"}
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
     ]
