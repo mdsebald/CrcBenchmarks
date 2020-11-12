@@ -2,16 +2,18 @@
 
 ## Run benchmarks comparing various CRC implementations
 
-Benchmark Environment: 
+Benchmark Environment:
+
   OS: WSL2, Ubuntu 18.04, on 64 bit Windows 10
   Processor:	Intel(R) Core(TM) i5-6300U CPU @ 2.40GHz, 2501 Mhz, 2 Core(s), 4 Logical Processor(s)
   8 GB Ram
 
-Benchmark CRC routines
-  CRC.ccitt_16() - Elixir wrapper implemented with NIF
-  ZWave.CRC.crc16_aug_ccitt() - Native Elixir (Copied from Grizzly project)
-  crc16_aug_ccitt.crc() - Native Erlang
-  crc16_modbus.crc() - Native Erlang (Algorithm reflects input and output, requires fewer calculations)
+Benchmark CRC routines:
+
+  1. CRC.ccitt_16() - Elixir wrapper implemented with NIF
+  2. ZWave.CRC.crc16_aug_ccitt() - Native Elixir (Copied from Grizzly project)
+  3. crc16_aug_ccitt.crc() - Native Erlang
+  4. crc16_modbus.crc() - Native Erlang (Algorithm reflects input and output, requires fewer calculations)
 
 Benchmark run 3 times, using a 100 bytes of random data each time
   1. OTP-23 without HiPE enabled
