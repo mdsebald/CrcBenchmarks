@@ -18,7 +18,7 @@ Benchmark CRC routines:
 Benchmark run 3 times, using a 100 bytes of random data each time
   1. OTP-23 without HiPE enabled
   2. OTP-23 with HiPE enabled
-  3. OTO-24 uses JIT compiler
+  3. OTP-24 uses JIT compiler
 
 OTP-23 without HiPE 
 ```
