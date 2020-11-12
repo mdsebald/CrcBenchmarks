@@ -8,7 +8,7 @@ defmodule ZWave.CRC do
 
   use Bitwise
 
-  @compile [:native, {:hipe, [:verbose, :o3]}]
+  @compile :native
 
   @table ZWave.CRC.Table.ccitt_table(0x1021)
 

@@ -3,7 +3,7 @@ defmodule ZWave.CRC.Table do
 
   use Bitwise
 
-  @compile [:native, {:hipe, [:verbose, :o3]}]
+  @compile :native
 
   def ccitt_table(poly) do
     table =

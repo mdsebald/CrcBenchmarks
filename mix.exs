@@ -26,6 +26,8 @@ defmodule CrcBenchmarks.MixProject do
       {:crc32cer, "~> 0.1.10"},
       # Generalized implementation of CRC using NIF's, Configurable for number of bits, etc.
       {:crc, "~> 0.10"},
+      # Native erlang implementation
+      {:cerlc, git: "https://github.com/mdsebald/cerlc.git", tag: "main"}
       # Native elixir CRC implementation
       # Copy Zwave.Crc modules to main lib, and enable HiPE
       # {:grizzly, "~> 0.15.3"}
