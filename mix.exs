@@ -30,9 +30,6 @@ defmodule CrcBenchmarks.MixProject do
       {:cerlc, git: "https://github.com/mdsebald/cerlc.git", tag: "main"}
       # Native elixir CRC implementation
       # Copy Zwave.Crc modules to main lib, and enable HiPE
-      # {:grizzly, "~> 0.15.3"}
-      # {:dep_from_hexpm, "~> 0.3.0"},
-      # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
     ]
   end
 end

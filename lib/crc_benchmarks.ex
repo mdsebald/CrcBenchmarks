@@ -32,7 +32,6 @@ defmodule CrcBenchmarks do
     data_bin = :binary.list_to_bin(data_list)
 
     Benchwarmer.benchmark(&:crc32cer.nif/1, data_bin) # Erlang implementation for CRC32-C using NIF's
-    Benchwarmer.benchmark(&CRC32_C.crc/1, [data_list])
     Benchwarmer.benchmark(&:crc32_c.crc/1, [data_list])
   end
 
@@ -45,6 +44,19 @@ defmodule CrcBenchmarks do
       &:crc16_aug_ccitt.crc/1, # Native Erlang CRC-16/AUG CCITT
       &:crc16_modbus.crc/1, # Native Erlang CRC-16/MODBUS
       &:crc32.crc/1, # Native Erlang CRC-32
+      &:crc32_c.crc/1], # Native Erlang CRC-32/C
+      data_bin)
+  end
+
+  def run_benchmark_crc32(data_length) do
+    data_list = make_data_list(data_length)
+    data_bin = :binary.list_to_bin(data_list)
+
+    Benchwarmer.benchmark([
+      &:erlang.crc32/1, # Erlang BIF for CRC-32
+      &:crc32cer.nif/1, # Erlang implementation for CRC32-C using NIF's
+      &CRC.crc_32/1,    # Elixir configurable CRC implemented using NIF's, CRC-32
+      &:crc32.crc/1,    # Native Erlang CRC-32
       &:crc32_c.crc/1], # Native Erlang CRC-32/C
       data_bin)
   end
